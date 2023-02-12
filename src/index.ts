@@ -8,3 +8,5 @@ export {Firebase} from "./firebase/Firebase";
 export {Logging} from "./logging/Logging";
 export {Redis} from "./redis/Redis";
 export {RedisPool} from "./redis/RedisPool";
+export {Package} from "./package/Package";
+export {EventSource, ServerSentEvent} from "./eventsource/EventSource";
