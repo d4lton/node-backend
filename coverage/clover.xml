@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1676219500384" clover="3.2.0">
-  <project timestamp="1676219500384" name="All files">
+<coverage generated="1676219754988" clover="3.2.0">
+  <project timestamp="1676219754988" name="All files">
     <metrics statements="204" coveredstatements="44" conditionals="55" coveredconditionals="0" methods="92" coveredmethods="6" elements="351" coveredelements="50" complexity="0" loc="204" ncloc="204" packages="6" files="7" classes="7"/>
     <package name="src">
       <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="1"/>
@@ -86,7 +86,7 @@
         <metrics statements="114" coveredstatements="12" conditionals="43" coveredconditionals="0" methods="64" coveredmethods="0"/>
         <line num="5" count="1" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
@@ -202,7 +202,7 @@
       <file name="RedisPool.ts" path="/Users/dana/d4lton/libraries/node-backend/src/redis/RedisPool.ts">
         <metrics statements="42" coveredstatements="8" conditionals="5" coveredconditionals="0" methods="11" coveredmethods="1"/>
         <line num="5" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
