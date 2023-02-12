@@ -10,10 +10,10 @@ export class Package {
   private _package: any = undefined;
   private _path?: string;
 
-  get name() { return this.package?.name }
-  get description() { return this.package?.description }
-  get version() { return this.package?.version }
-  get commit() { return this.package?.commit }
+  get name() { return this.package?.name; }
+  get description() { return this.package?.description; }
+  get version() { return this.package?.version; }
+  get commit() { return this.package?.commit; }
 
   getActualWorkingDirectory(): string {
     const binaryPath = process.argv[1];
@@ -30,9 +30,9 @@ export class Package {
   findPackageJson(dir?: string): string | undefined {
     if (!dir) { dir = this.getActualWorkingDirectory(); }
     const file = fs.readdirSync(dir).find(file => file === "package.json");
-    if (file) { return path.join(dir, file) }
+    if (file) { return path.join(dir, file); }
     const parent = path.dirname(dir);
-    if (parent?.length > 0 && parent !== "/") { return this.findPackageJson(parent) }
+    if (parent?.length > 0 && parent !== "/") { return this.findPackageJson(parent); }
     return undefined;
   }
 

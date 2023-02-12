@@ -19,7 +19,7 @@
     "tag": "git tag -a $npm_package_version -m $npm_package_version && git push --tags",
     "postversion": "npm run commit:version && npm run tag && npm run commit:hash",
     "postpublish": "rm -f $npm_package_name-*.tgz && rm -rf dist",
-    "docs": "typedoc --excludePrivate",
+    "docs": "typedoc --plugin typedoc-plugin-markdown --excludePrivate",
     "release": "npm run test && npm run test:coverage && npm run patch",
     "update:hash": "cat package.json | sed 's/\"git_hash\": \"\\(.*\\)\"/\"git_hash\": \"'\"`git rev-parse HEAD`\"'\"/' > package.json"
   },
@@ -43,6 +43,7 @@
     "organize-imports-cli": "0.10.0",
     "ts-jest": "29.0.5",
     "typedoc": "0.23.25",
+    "typedoc-plugin-markdown": "3.14.0",
     "typescript": "4.9.5"
   },
   "config": {
