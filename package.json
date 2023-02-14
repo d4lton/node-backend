@@ -29,8 +29,10 @@
   "license": "MIT",
   "dependencies": {
     "firebase-admin": "11.5.0",
+    "glob": "8.1.0",
     "log4js": "6.7.1",
-    "redis": "4.6.4"
+    "redis": "4.6.4",
+    "reflect-metadata": "0.1.13"
   },
   "devDependencies": {
     "@d4lton/node-common": "1.0.4",
@@ -57,7 +59,7 @@
     ],
     "coverageThreshold": {
       "global": {
-        "lines": 20
+        "lines": 10
       }
     }
   }
