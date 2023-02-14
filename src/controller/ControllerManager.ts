@@ -2,9 +2,9 @@
  * Copyright ©2023 Dana Basken
  */
 
-import "reflect-metadata";
 import glob from "glob";
 import log4js from "log4js";
+import "reflect-metadata";
 
 const logger = log4js.getLogger("ControllerManager");
 

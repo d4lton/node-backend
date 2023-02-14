@@ -2,8 +2,8 @@
  * Copyright ©2023 Dana Basken
  */
 
-import log4js from "log4js";
 import {English} from "@d4lton/node-common";
+import log4js from "log4js";
 
 const logger = log4js.getLogger("EventSource");
 
