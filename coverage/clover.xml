@@ -1,19 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1676384569912" clover="3.2.0">
-  <project timestamp="1676384569912" name="All files">
-    <metrics statements="363" coveredstatements="71" conditionals="89" coveredconditionals="8" methods="142" coveredmethods="12" elements="594" coveredelements="91" complexity="0" loc="363" ncloc="363" packages="10" files="18" classes="18"/>
+<coverage generated="1676384987333" clover="3.2.0">
+  <project timestamp="1676384987334" name="All files">
+    <metrics statements="372" coveredstatements="107" conditionals="89" coveredconditionals="8" methods="151" coveredmethods="12" elements="612" coveredelements="127" complexity="0" loc="372" ncloc="372" packages="10" files="18" classes="18"/>
     <package name="src">
-      <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="2"/>
+      <metrics statements="17" coveredstatements="17" conditionals="0" coveredconditionals="0" methods="17" coveredmethods="2"/>
       <file name="index.ts" path="/Users/dana/d4lton/libraries/node-backend/src/index.ts">
-        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="2"/>
+        <metrics statements="17" coveredstatements="17" conditionals="0" coveredconditionals="0" methods="17" coveredmethods="2"/>
         <line num="5" count="12" type="stmt"/>
         <line num="6" count="2" type="stmt"/>
         <line num="7" count="2" type="stmt"/>
         <line num="8" count="2" type="stmt"/>
         <line num="9" count="2" type="stmt"/>
         <line num="10" count="2" type="stmt"/>
-        <line num="11" count="3" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
         <line num="12" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="19" count="2" type="stmt"/>
+        <line num="20" count="3" type="stmt"/>
+        <line num="21" count="2" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
       </file>
     </package>
     <package name="src.config">
@@ -41,15 +50,15 @@
       </file>
     </package>
     <package name="src.controller">
-      <metrics statements="49" coveredstatements="0" conditionals="10" coveredconditionals="0" methods="14" coveredmethods="0"/>
+      <metrics statements="49" coveredstatements="6" conditionals="10" coveredconditionals="0" methods="14" coveredmethods="0"/>
       <file name="ControllerManager.ts" path="/Users/dana/d4lton/libraries/node-backend/src/controller/ControllerManager.ts">
-        <metrics statements="49" coveredstatements="0" conditionals="10" coveredconditionals="0" methods="14" coveredmethods="0"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="9" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
+        <metrics statements="49" coveredstatements="6" conditionals="10" coveredconditionals="0" methods="14" coveredmethods="0"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
         <line num="20" count="0" type="stmt"/>
         <line num="21" count="0" type="stmt"/>
         <line num="22" count="0" type="stmt"/>
@@ -96,29 +105,29 @@
       </file>
     </package>
     <package name="src.controller.decorators">
-      <metrics statements="51" coveredstatements="0" conditionals="8" coveredconditionals="0" methods="16" coveredmethods="0"/>
+      <metrics statements="51" coveredstatements="21" conditionals="8" coveredconditionals="0" methods="16" coveredmethods="0"/>
       <file name="Controller.ts" path="/Users/dana/d4lton/libraries/node-backend/src/controller/decorators/Controller.ts">
-        <metrics statements="6" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="7" count="0" type="cond" truecount="0" falsecount="1"/>
+        <metrics statements="6" coveredstatements="2" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="7" count="2" type="cond" truecount="0" falsecount="1"/>
         <line num="8" count="0" type="stmt"/>
         <line num="9" count="0" type="stmt"/>
         <line num="10" count="0" type="cond" truecount="0" falsecount="1"/>
         <line num="11" count="0" type="stmt"/>
       </file>
       <file name="Delete.ts" path="/Users/dana/d4lton/libraries/node-backend/src/controller/decorators/Delete.ts">
-        <metrics statements="6" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
+        <metrics statements="6" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
         <line num="9" count="0" type="stmt"/>
         <line num="10" count="0" type="stmt"/>
         <line num="11" count="0" type="stmt"/>
       </file>
       <file name="Description.ts" path="/Users/dana/d4lton/libraries/node-backend/src/controller/decorators/Description.ts">
-        <metrics statements="9" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="2" coveredmethods="0"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
+        <metrics statements="9" coveredstatements="2" conditionals="4" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
         <line num="8" count="0" type="stmt"/>
         <line num="9" count="0" type="cond" truecount="0" falsecount="1"/>
         <line num="10" count="0" type="stmt"/>
@@ -128,45 +137,45 @@
         <line num="15" count="0" type="stmt"/>
       </file>
       <file name="Get.ts" path="/Users/dana/d4lton/libraries/node-backend/src/controller/decorators/Get.ts">
-        <metrics statements="6" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
+        <metrics statements="6" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
         <line num="9" count="0" type="stmt"/>
         <line num="10" count="0" type="stmt"/>
         <line num="11" count="0" type="stmt"/>
       </file>
       <file name="Patch.ts" path="/Users/dana/d4lton/libraries/node-backend/src/controller/decorators/Patch.ts">
-        <metrics statements="6" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
+        <metrics statements="6" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
         <line num="9" count="0" type="stmt"/>
         <line num="10" count="0" type="stmt"/>
         <line num="11" count="0" type="stmt"/>
       </file>
       <file name="Post.ts" path="/Users/dana/d4lton/libraries/node-backend/src/controller/decorators/Post.ts">
-        <metrics statements="6" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
+        <metrics statements="6" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
         <line num="9" count="0" type="stmt"/>
         <line num="10" count="0" type="stmt"/>
         <line num="11" count="0" type="stmt"/>
       </file>
       <file name="Put.ts" path="/Users/dana/d4lton/libraries/node-backend/src/controller/decorators/Put.ts">
-        <metrics statements="6" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
+        <metrics statements="6" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
         <line num="9" count="0" type="stmt"/>
         <line num="10" count="0" type="stmt"/>
         <line num="11" count="0" type="stmt"/>
       </file>
       <file name="RequestField.ts" path="/Users/dana/d4lton/libraries/node-backend/src/controller/decorators/RequestField.ts">
-        <metrics statements="6" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
+        <metrics statements="6" coveredstatements="2" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
         <line num="8" count="0" type="stmt"/>
         <line num="9" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="10" count="0" type="stmt"/>

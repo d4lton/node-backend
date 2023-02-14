@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>16/16</span>
+                <span class='fraction'>34/34</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">25% </span>
+                <span class="strong">11.76% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/8</span>
+                <span class='fraction'>2/17</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>8/8</span>
+                <span class='fraction'>17/17</span>
             </div>
         
             
@@ -75,7 +75,17 @@
 <a name='L10'></a><a href='#L10'>10</a>
 <a name='L11'></a><a href='#L11'>11</a>
 <a name='L12'></a><a href='#L12'>12</a>
-<a name='L13'></a><a href='#L13'>13</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -85,20 +95,40 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
  * Copyright ©2023 Dana Basken
  */
 &nbsp;
 export {Config} from "./config/Config";
+export {<span class="fstat-no" title="function not covered" >ControllerManager}</span> from "./controller/ControllerManager";
+export {<span class="fstat-no" title="function not covered" >Controller}</span> from "./controller/decorators/Controller";
+export {<span class="fstat-no" title="function not covered" >Delete}</span> from "./controller/decorators/Delete";
+export {<span class="fstat-no" title="function not covered" >Description}</span> from "./controller/decorators/Description";
+export {<span class="fstat-no" title="function not covered" >Get}</span> from "./controller/decorators/Get";
+export {<span class="fstat-no" title="function not covered" >Patch}</span> from "./controller/decorators/Patch";
+export {<span class="fstat-no" title="function not covered" >Post}</span> from "./controller/decorators/Post";
+export {<span class="fstat-no" title="function not covered" >Put}</span> from "./controller/decorators/Put";
+export {<span class="fstat-no" title="function not covered" >RequestField}</span> from "./controller/decorators/RequestField";
+export {IController} from "./controller/IController";
 export {<span class="fstat-no" title="function not covered" >RateLimitError}</span> from "./errors/RateLimitError";
+export {<span class="fstat-no" title="function not covered" >EventSource,</span> ServerSentEvent} from "./eventsource/EventSource";
 export {<span class="fstat-no" title="function not covered" >Firebase}</span> from "./firebase/Firebase";
 export {<span class="fstat-no" title="function not covered" >Logging}</span> from "./logging/Logging";
+export {Package} from "./package/Package";
 export {<span class="fstat-no" title="function not covered" >Redis,</span> RedisSubscription, RedisSubscriptionCallback} from "./redis/Redis";
 export {<span class="fstat-no" title="function not covered" >RedisPool,</span> RedisPoolClient} from "./redis/RedisPool";
-export {Package} from "./package/Package";
-export {<span class="fstat-no" title="function not covered" >EventSource,</span> ServerSentEvent} from "./eventsource/EventSource";
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -106,7 +136,7 @@ export {<span class="fstat-no" title="function not covered" >EventSource,</span>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-02-14T14:22:49.900Z
+                at 2023-02-14T14:29:47.320Z
             </div>
         <script src="../prettify.js"></script>
         <script>
