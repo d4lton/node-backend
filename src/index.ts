@@ -5,6 +5,7 @@
 export {Config} from "./config/Config";
 export {ControllerManager} from "./controller/ControllerManager";
 export {Controller} from "./controller/decorators/Controller";
+export {CronJob} from "./CronJob";
 export {Delete} from "./controller/decorators/Delete";
 export {Description} from "./controller/decorators/Description";
 export {Get} from "./controller/decorators/Get";

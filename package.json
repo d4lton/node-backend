@@ -20,7 +20,7 @@
     "postversion": "npm run commit:version && npm run tag && npm run commit:hash",
     "postpublish": "rm -f $npm_package_name-*.tgz && rm -rf dist",
     "docs": "typedoc --plugin typedoc-plugin-markdown --excludePrivate",
-    "release": "npm run test && npm run test:coverage && npm run patch",
+    "release": "npm run test && npm run patch",
     "update:hash": "cat package.json | sed 's/\"git_hash\": \"\\(.*\\)\"/\"git_hash\": \"'\"`git rev-parse HEAD`\"'\"/' > package.json"
   },
   "keywords": [],
@@ -28,6 +28,8 @@
   "repository": "git://github.com/d4lton/node-backend.git",
   "license": "MIT",
   "dependencies": {
+    "@d4lton/node-common": "1.0.4",
+    "@types/redis": "2.8.32",
     "firebase-admin": "11.5.0",
     "glob": "8.1.0",
     "log4js": "6.7.1",
@@ -35,9 +37,7 @@
     "reflect-metadata": "0.1.13"
   },
   "devDependencies": {
-    "@d4lton/node-common": "1.0.4",
     "@types/jest": "29.4.0",
-    "@types/redis": "2.8.32",
     "@typescript-eslint/eslint-plugin": "5.51.0",
     "@typescript-eslint/parser": "5.51.0",
     "eslint": "8.34.0",
