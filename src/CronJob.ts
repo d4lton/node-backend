@@ -71,7 +71,7 @@ export abstract class CronJob {
     try {
       if (this.options.serial) {
         const lock = await this.redis.getLock(`cronjob.${this.constructor.name}`, false, CronJob.LOCK_TTL_MS);
-        if (lock) { this.run(now); }
+        if (lock) { await this.run(now); }
         // lock will expire naturally, don't unlock. this will prevent other processes from immediately grabbing lock for this "minute"
       } else {
         this.run(now);
@@ -106,14 +106,65 @@ export abstract class CronJob {
     };
   }
 
+  static stringify(expression: CronExpression): string {
+    return [
+      CronJob.parseCronExpressionValues(expression.minute.values, 0, 59),
+      CronJob.parseCronExpressionValues(expression.hour.values, 0, 23),
+      CronJob.parseCronExpressionValues(expression.date.values, 1, 31),
+      CronJob.parseCronExpressionValues(expression.month.values, 1, 12),
+      CronJob.parseCronExpressionValues(expression.day.values, 0, 6)
+    ].join(" ");
+  }
+
+  static parseCronExpressionValues(values: string[], minValue: number, maxValue: number): string {
+    if (values.length === 0) { return "*"; }
+    const results: string[] = [];
+    let numericValues = values.map(it => parseInt(it));
+
+    // convert stepped intervals to */step
+    const range = maxValue - minValue + 1;
+    const maxStepSize = Math.ceil(range / 2);
+    for (let stepSize = 2; stepSize < maxStepSize; stepSize++) {
+      const steps = [...Array(Math.ceil(range / stepSize))].map((_, index) => minValue + (index * stepSize));
+      if (steps.every(value => numericValues.includes(value))) {
+        numericValues = numericValues.filter(value => !steps.includes(value));
+        results.push(`*/${stepSize}`);
+        break;
+      }
+    }
+
+    // convert any ranges to start-end
+    let rangeSets = numericValues
+      .reduce((ranges: any, value: number, index: number, values: number[]) => {
+        if (values[index - 1] === value - 1 || values[index + 1] === value + 1) {
+          ranges.range.push(value);
+        } else {
+          ranges.values.push(ranges.range);
+          ranges.range = [];
+          ranges.values.push(value);
+        }
+        return ranges;
+      }, {range: [], values: []});
+    if (rangeSets.range.length) { rangeSets.values.push(rangeSets.range); }
+    rangeSets.values
+      .map((it: any) => Array.isArray(it) ? it.join("-") : `${it}`).filter((it: string) => it !== "")
+      .forEach((value: string) => results.push(value));
+
+    return results.join(",");
+  }
+
+  static parse(cron: string): CronExpression {
+    return CronJob.fromCronString(cron);
+  }
+
   static fromCronString(cron: string): CronExpression {
     const matches = cron.match(/^([*0-9/\-,]+)\s+([*0-9/\-,]+)\s+([*0-9/\-,]+)\s+([*0-9/\-,]+)\s+([*0-9/\-,]+)$/);
     if (!matches) { throw new Error(`invalid cron: '${cron}'`); }
     return {
-      minute: CronJob.parseCronTimeValue(matches[1], 0, 60),
+      minute: CronJob.parseCronTimeValue(matches[1], 0, 59),
       hour: CronJob.parseCronTimeValue(matches[2], 0, 23),
       date: CronJob.parseCronTimeValue(matches[3], 1, 31),
-      month: CronJob.parseCronTimeValue(matches[4], 0, 11),
+      month: CronJob.parseCronTimeValue(matches[4], 1, 12),
       day: CronJob.parseCronTimeValue(matches[5], 0, 6)
     };
   }
