@@ -82,12 +82,15 @@ export class ControllerManager {
       try {
         return await method.apply(target, args);
       } catch (error: any) {
-        const code = error.http_code || 500;
-        if (code >= 300) {
-          const ip = request.headers["x-forwarded-for"] || request.connection.remoteAddress;
-          logger.error(ip, error.message, JSON.stringify({method: request.method, url: request.url, params: request.params, query: request.query, body: request.body}));
+        const ip = request.headers["x-forwarded-for"] || request.connection.remoteAddress;
+        let body = JSON.stringify(request.body);
+        if (body.length > 512) {
+          body = `${body.substring(0, 256)} … ${body.substring(body.length - 256)}`;
         }
-        response.status(code).send({error: error.message});
+        const where = error.stack?.split("\n")[1]?.split(/[/)]/)?.filter((it: any) => it)?.slice(-1)?.join();
+        logger.error(ip, error.message, JSON.stringify({where, method: request.method, url: request.url, params: request.params, query: request.query, body: body}));
+        const code = typeof error.code === "number" ? error.code >= 200 ? error.code : 500 : 500;
+        response.status(code).send({errors: [{error: error.message}]});
       }
     };
   }
