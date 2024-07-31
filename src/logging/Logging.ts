@@ -31,11 +31,13 @@ export class Logging {
       };
     }
 
+    const enableCallStack: boolean = Config.get("logger.enableCallStack", false);
+
     const appenderNames = Object.keys(appenders);
     const levels: any = Config.get("logger.levels", {});
     const categories: any = Object.keys(levels).reduce((categories: any, category: any) => {
-      return {...categories, [category]: {appenders: appenderNames, level: levels[category]}};
-    }, {default: {appenders: appenderNames, level: level}});
+      return {...categories, [category]: {appenders: appenderNames, level: levels[category], enableCallStack}};
+    }, {default: {appenders: appenderNames, level: level, enableCallStack}});
 
     log4js.configure({appenders: appenders, categories: categories});
   }
