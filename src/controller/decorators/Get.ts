@@ -1,13 +1,18 @@
 /**
- * Copyright ©2023 Dana Basken
+ * Copyright ©2022 Dana Basken
  */
 
 import "reflect-metadata";
-import {ControllerManager, RESTMethodOptions} from "../ControllerManager";
+import {ControllerManager} from "../ControllerManager";
 
-export const Get = (path: string, options?: RESTMethodOptions): any => {
+export const Get = (path: string, ...middlewares: any[]): any => {
   return (target: any, propertyKey: string, descriptor: PropertyDescriptor): void => {
-    ControllerManager.addRouteMetadata(path, "GET", target, propertyKey, options?.middlewares);
+    if (!Reflect.hasMetadata("routes", target.constructor)) {
+      Reflect.defineMetadata("routes", [], target.constructor);
+    }
+    const routes = Reflect.getMetadata("routes", target.constructor) as Array<any>;
+    routes.push({method: "GET", path, handler: propertyKey, middlewares: middlewares});
+    Reflect.defineMetadata("routes", routes, target.constructor);
     ControllerManager.addRESTErrorHandler(target, descriptor);
   };
 };

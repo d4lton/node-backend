@@ -1,10 +1,11 @@
 /**
- * Copyright ©2023 Dana Basken
+ * Copyright ©2022 Dana Basken
  */
+
+import {Express} from "express";
 
 export interface IController {
 
-  start(): Promise<void>;
-  stop(): Promise<void>;
+  start(app?: Express): Promise<void>;
 
 }
