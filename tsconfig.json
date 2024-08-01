@@ -17,7 +17,6 @@
     "jsx": "react",
     "noUnusedLocals": false,
     "noUnusedParameters": false,
-    "suppressImplicitAnyIndexErrors": true,
     "allowSyntheticDefaultImports": true
   },
   "exclude": ["node_modules", "dist"],
