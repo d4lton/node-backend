@@ -29,7 +29,6 @@
   "license": "MIT",
   "dependencies": {
     "@d4lton/node-common": "1.0.10",
-    "@types/redis": "4.0.11",
     "firebase-admin": "12.3.0",
     "glob": "11.0.0",
     "log4js": "6.9.1",
