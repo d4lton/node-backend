@@ -68,7 +68,6 @@ export class RedisPool {
   static get config(): RedisClientOptions {
     const host = Config.get("redis.host", "localhost");
     const port = Config.get("redis.port", 6379);
-    logger.trace(`Redis configured for ${host}:${port}`);
     return {
       socket: {
         host: host,
