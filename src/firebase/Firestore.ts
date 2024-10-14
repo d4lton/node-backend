@@ -29,7 +29,7 @@ export class Firestore {
     }
   }
 
-  static async update(collectionPath: string, documentPath: string, data: any): Promise<any> {
+  static async update(collectionPath: string, documentPath: string, data: any): Promise<admin.firestore.WriteResult> {
     return Firebase
       .firestore
       .collection(collectionPath)

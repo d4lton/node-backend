@@ -34,9 +34,6 @@ export class Config {
     }
   }
 
-  static start(): void {
-  }
-
   static updateConfigFromRedis(message: any): void {
     Config.set(message.key, message.value);
     if (message.key === "logger.root.level" || message.key.startsWith("logger.levels.")) { Logging.initializeLogging(); }
@@ -53,7 +50,16 @@ export class Config {
    * Get a key's value.
    */
   static get(key: string, defaultValue?: any): any {
-    return ObjectUtilities.getDottedKeyValue(key, Config.entries, defaultValue);
+    let value = ObjectUtilities.getDottedKeyValue(key, Config.entries, defaultValue);
+    if (typeof value === "string") {
+      const match = value.match(/^@(.+?):(.+)$/);
+      if (match) {
+        value = fs.readFileSync(match[2]).toString().trim();
+        if (match[1] === "JSON") { value = JSON.parse(value); }
+        Config.set(key, value);
+      }
+    }
+    return value;
   }
 
 }

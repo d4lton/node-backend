@@ -14,7 +14,9 @@ describe("Config", function() {
         longitude: 1.2,
         latitude: 2.1
       }
-    }
+    },
+    json_data: "@JSON:tests/json_data.json",
+    text_data: "@TEXT:tests/text_data.txt"
   };
 
   beforeEach(() => {
@@ -33,6 +35,12 @@ describe("Config", function() {
     expect(Config.get("age")).toEqual(21);
     Config.set("location.country", "elbonia");
     expect(Config.get("location.country")).toEqual("elbonia");
+  });
+
+  it("get() with imports should work as expected", () => {
+    Config.load(entries);
+    expect(Config.get("json_data")).toEqual({"key": "value"});
+    expect(Config.get("text_data")).toEqual("this is a test text file");
   });
 
 });
