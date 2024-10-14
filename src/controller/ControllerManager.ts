@@ -1,14 +1,29 @@
 /**
- * Copyright ©2022 Dana Basken
+ * Copyright ©2022 Drivepoint
  */
 
 import "reflect-metadata";
 import {glob} from "glob";
 import log4js from "log4js";
+import {AsyncLocalStorage} from "node:async_hooks";
+import {English} from "@d4lton/node-common";
+import InternalServerError from "../errors/InternalServerError";
 
 const logger = log4js.getLogger("ControllerManager");
 
+export type ControllerManagerStorageType = {
+  request: any;
+};
+
 export class ControllerManager {
+
+  public static storage: AsyncLocalStorage<ControllerManagerStorageType> = new AsyncLocalStorage();
+
+  public static get request(): any {
+    const request = ControllerManager.storage.getStore()?.request;
+    if (!request) { throw new InternalServerError("request must be defined"); }
+    return request;
+  }
 
   static async getControllerFiles(): Promise<string[]> {
     const expression = "src/**/+([a-zA-Z])Controller.@(ts|js)";
@@ -25,6 +40,8 @@ export class ControllerManager {
   }
 
   static async start(app: any) {
+    const startMs = Date.now();
+    const names: string[] = [];
     const files = await ControllerManager.getControllerFiles();
     for (const file of files) {
       try {
@@ -37,14 +54,16 @@ export class ControllerManager {
           const routes: Array<any> = Reflect.getMetadata("routes", module.default);
           for (const route of routes) {
             app[route.method.toLowerCase()](`${prefix}${route.path}`, route.middlewares, (request: any, response: any) => {
-              controller[route.handler](request, response);
+              ControllerManager.storage.run({request}, () => controller[route.handler](request, response));
             });
           }
+          names.push(module.default.name);
         }
       } catch (error: any) {
-        console.error(`could not create Controller for ${file}: ${error.message}`);
+        logger.error(`could not create Controller for ${file}: ${error.message}`);
       }
     }
+    logger.debug(`started ${names.length} Controller${English.plural(names.length)} in ${Date.now() - startMs}ms`);
   }
 
   static addRESTErrorHandler(target: any, descriptor: PropertyDescriptor): void {
