@@ -2,10 +2,9 @@
  * Copyright ©2022 Dana Basken
  */
 
-import {ObjectUtilities} from "@d4lton/node-common";
 import fs from "fs";
 import log4js from "log4js";
-import {Logging} from "../logging/Logging";
+import {ObjectUtilities} from "@d4lton/node-common";
 
 const logger = log4js.getLogger("Config");
 
@@ -18,6 +17,7 @@ export class Config {
   }
 
   static load(entries: any): void {
+    Config._includeFiles(entries);
     Config.entries = Object.assign({}, Config.entries, entries);
   }
 
@@ -25,18 +25,7 @@ export class Config {
    * Load config values from a JSON file.
    */
   static loadFile(file: string) {
-    try {
-      const text = fs.readFileSync(file);
-      const config = JSON.parse(text.toString());
-      Config.entries = Object.assign({}, Config.entries, config);
-    } catch (error: any) {
-      console.error(error.message);
-    }
-  }
-
-  static updateConfigFromRedis(message: any): void {
-    Config.set(message.key, message.value);
-    if (message.key === "logger.root.level" || message.key.startsWith("logger.levels.")) { Logging.initializeLogging(); }
+    Config.load(JSON.parse(fs.readFileSync(file).toString()));
   }
 
   /**
@@ -50,16 +39,25 @@ export class Config {
    * Get a key's value.
    */
   static get(key: string, defaultValue?: any): any {
-    let value = ObjectUtilities.getDottedKeyValue(key, Config.entries, defaultValue);
-    if (typeof value === "string") {
+    return ObjectUtilities.getDottedKeyValue(key, Config.entries, defaultValue);
+  }
+
+  private static _includeFiles(entries: any): void {
+    for (const key in entries) {
+      let value: any = entries[key];
+      if (value == null) { continue; }
+      if (typeof value === "object") {
+        Config._includeFiles(value);
+        continue;
+      }
+      if (typeof value !== "string") { continue; }
       const match = value.match(/^@(.+?):(.+)$/);
       if (match) {
         value = fs.readFileSync(match[2]).toString().trim();
         if (match[1] === "JSON") { value = JSON.parse(value); }
-        Config.set(key, value);
+        entries[key] = value;
       }
     }
-    return value;
   }
 
 }
