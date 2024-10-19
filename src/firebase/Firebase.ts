@@ -32,7 +32,7 @@ export class Firebase {
   private static _ensureInitialized(): void {
     if (!Firebase._app) {
       logger.trace("initializing Firebase...");
-      const config = Config.get("firestore");
+      const config = Config.get("firebase") ?? Config.get("firestore");
       Firebase._app = admin.initializeApp(config ? {credential: admin.credential.cert(config)} : undefined);
       Firebase._auth = Firebase.app.auth();
       Firebase._firestore = Firebase.app.firestore();
