@@ -14,6 +14,8 @@ export class Package {
   get description() { return this.package?.description; }
   get version() { return this.package?.version; }
   get commit() { return this.package?.commit; }
+  get config() { return this.package?.config; }
+  get git_hash() { return this.config?.git_hash; }
 
   getActualWorkingDirectory(): string {
     const binaryPath = process.argv[1];
