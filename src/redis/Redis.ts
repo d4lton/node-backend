@@ -70,6 +70,10 @@ export class Redis {
     return this.pool.withClient(async client => client.lPush(key, value));
   }
 
+  async rpush(key: string, value: any): Promise<any> {
+    return this.pool.withClient(async client => client.rPush(key, value));
+  }
+
   /**
    * Remove one or more matching elements from a list.
    */
