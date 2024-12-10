@@ -74,6 +74,10 @@ export class Redis {
     return this.pool.withClient(async client => client.rPush(key, value));
   }
 
+  async lrange(key: string, start: number, stop: number): Promise<any> {
+    return this.pool.withClient(async client => client.lRange(key, start, stop));
+  }
+
   /**
    * Remove one or more matching elements from a list.
    */
