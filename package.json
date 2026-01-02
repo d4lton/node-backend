@@ -50,7 +50,7 @@
     "typescript-eslint": "8.2.0"
   },
   "config": {
-    "git_hash": "5a6501e20f4b1fcb3ce2268b97348f506de1c818"
+    "git_hash": "00f44ac147665a59c0da602a97a6f25fff278108"
   },
   "jest": {
     "preset": "ts-jest",
